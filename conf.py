@@ -24,8 +24,8 @@ extensions = [
 # -- Project information -----------------------------------------------------
 
 project = 'SimBA-uw-tf'
-copyright = '2021, Simon Nilsson, Jia Jie Choong'
-author = 'Simon Nilsson, Jia Jie Choong'
+copyright = '2021, Simon Nilsson, Jia Jie Choong, Nastacia Goodwin, Sophia Hwang ,Sam Golden'
+author = 'Simon Nilsson, Jia Jie Choong, Sam Golden'
 
 # The full version, including alpha/beta/rc tags
 release = 'March 2020'
@@ -66,3 +66,7 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_logo = './images/simba_logo.jpg'
+
+html_favicon = './images/SimBa_logo.ico'

@@ -8,10 +8,10 @@ Welcome to SimBA's documentation!
 
 This page hosts the documentation for SimBA-uw-tf
 
-Contents
-^^^^^^^^^^
+
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
    docs/intro/index
    docs/getting_started/index
