@@ -35,7 +35,7 @@ Installation process
 
 1. Create an environment for simba using anaconda terminal.
 
-2. In the terminal type, ``pip install simba-uw-no-tf``
+2. In the terminal type, ``pip install simba-uw-tf``
 
 3. Then, ``conda install -c anaconda python.app``
 
