@@ -158,7 +158,7 @@ that represent one millimeter,
 9. Repeat the steps for every video in the table, and once it is done, click on ``Save Data``.
 This will generate a csv file named **video_info.csv** in ``/project_folder/log`` folder that contains a table with your video meta data.
 
-Step 4: Outlier Correction
+Step 3: Outlier Correction
 ***************************
 
 Outlier correction is used to correct gross tracking inaccuracies by detecting outliers based on movements and locations
@@ -168,14 +168,14 @@ of body parts in relation to the animal body length. For more details, please cl
 
 1. In this case, we will click ``Skip outlier correction`` because we have good tracking data and do not need to correct outliers.
 
-Step 5: Extract Features
+Step 4: Extract Features
 ************************
 
 Based on the coordinates of body parts in each frame - and the frame rate and the pixels per millimeter values - the feature extraction step calculates a larger set of features used for behavioral classification. Features are values such as metric distances between body parts, angles, areas, movement, paths, and their deviations and rank in individual frames and across rolling windows. This set of features will depend on the body-parts tracked during pose-estimation (which is defined when creating the project). Click `here <https://github.com/sgoldenlab/simba/blob/master/misc/Feature_description.csv>`_ for an example list of features when tracking 2 mice and 16 body parts.
 
 1. Click on ``Extract Features``.
 
-Step 6: Label Behavior
+Step 5: Label Behavior
 ************************
 
 This step is used for label the behaviors in each frames of a video. This data will be concatenated with the features and used for creating behavioral classifiers. 
@@ -195,11 +195,11 @@ and you should select the videos that you wished to annotate.
     .. image:: /images/labelbe.PNG
 
 
-2. Please click `here </docs/tutorials/b_annotation.html>`_ to learn how to use the behavior annotation interface.
+2. Please click `here <./tutorials/b_annotation.html>`_ to learn how to use the behavior annotation interface.
 
 3. Once finished, click on ``Generate/Save`` and it will generate a new *.csv* file in */csv/targets_inserted* folder.
 
-Step 7: Train Machine Model
+Step 6: Train Machine Model
 ****************************
 
 This step is used for training new machine models for behavioral classifications. 
@@ -279,23 +279,6 @@ Train single model
 7. Alternatively, click on the ``Save settings for specific model`` button to save the settings for one model. To generate multiple models - for either multiple different behaviors and/or using multiple different hyper-parameters - re-define the Machine model settings and click on ``Save settings for specific model`` again. Each time the ``Save settings for specific model`` is clicked, a new config file is generated in the */project_folder/configs* folder. In the next step (see below), a model for each config file will be created if pressing the **Train multiple models, one for each saved settings** button.
 
 8. If training a single model, click on ``Train Model``.
-
-To train multiple models
-##########################
-
-1. Click on ``Settings``.
-
-2. Under **Machine Model**, choose the machine model from the drop down menu, ``RF`` , ``GBC``, ``Xboost``.
-
-3. Under **Model**, select the model you wish to train from the drop down menu.
-
-4. Then, set the **Hyperparameters**.
-
-5. Click the ``Save settings for specific model`` button. This generates a meta.csv file, located in your ``project_folder/configs`` directory, which contains your selected hyperparameters. Repeat the steps to generate multiple models. On model will be generated for each of the meta.csv files in the ``project_folder/configs`` directory.
-
-6. Close the ``Machine models settings`` window.
-
-7. Click on the green ``Train Multiple Models, one for each saved settings`` button.
 
 Optional step before running machine model on new data
 ##########################################################
@@ -494,11 +477,5 @@ Merge all the generated plots from the previous step into a single frame and gen
 1. Check on the plot that you wish to merge together and output as a single video.
 
 2. Under **Merge Frames**, click ``Merge Frames`` and frames with all the generated plots will be combined and saved in the ``project_folder/frames/output/merged`` folder in a video format.
-
-Plotly
-=======
-
-Please click `here </docs/plotly_dash.md#interactive-data-visualization-in-simba>`_ to learn how to use plotly.
-
 
 
