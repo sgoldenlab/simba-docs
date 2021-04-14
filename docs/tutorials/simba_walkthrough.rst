@@ -8,7 +8,7 @@ about the menus and options and their use cases, see the
 
 Before beginning
 ================
-Please go to *insert website* to download our sample data to follow through this tutorial.
+Please click `here <https://osf.io/dg385/>`_ to download our sample data to follow through this tutorial.
 
 Part 1: Create project
 =====================
