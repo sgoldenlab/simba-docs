@@ -10,6 +10,12 @@ Before beginning
 ================
 Please click `here <https://osf.io/dg385/>`_ to download our sample data to follow through this tutorial.
 
+Starting simba
+===============
+
+1. Please open up command prompt and type ``simba``
+
+
 Part 1: Create project
 =====================
 
