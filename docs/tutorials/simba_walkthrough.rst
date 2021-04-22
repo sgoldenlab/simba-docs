@@ -1,23 +1,120 @@
 ======================
-SimBA Walkthrough with Sample Data
+IBANGS ML Social Behavior Workshop Tutorial
 ======================
 
-This is a generic step by step tutorial to start using SimBA to create behavioral classifiers. For more information
+This is a step by step tutorial to start using SimBA to create behavioral classifiers for the IBANGS ML Social Behavior Workshop. For more information
 about the menus and options and their use cases, see the
 `SimBA Scenario tutorials <https://github.com/sgoldenlab/simba#scenario-tutorials>`_
 
-Before beginning
-================
+Logistics prior to workshop start
+=================================
+Prior to the workshop please familiar yourself with the folder structure provided.
+
+- ``Classifier`` : This folder contains pre-trained classifiers from the Golden Lab (*Attack.sav*, *Defensive.sav*) and the classifier settings used for training (*model_settings.csv*).
+
+- ``raw_videos`` : This folder contains preprocessed videos that will be used in **Part 1**
+
+- ``Videos`` : This folder contains the videos that will be used in **Part 2** to train a classifier.
+
+- ``Tracking_data`` : This folder contains the tracking data of the videos that are generated using DeepLabCut.
+
+- ``targets_inserted``: This folder contains our hand annotated csvs for training a classifier in **Part 2**
+
+
 Please click `here <https://osf.io/dg385/>`_ to download our sample data to follow through this tutorial.
 
 Starting simba
 ===============
+We will be using miniconda in this workshop tutorial and the environment has been set up to use.
 
-1. Please open up command prompt and type ``simba``
+    1. Open up command prompt, type in ``conda activate simbaenv`` and press ``"Enter"``.
+
+    2. Type ``simba`` and press ``"Enter"``.
 
 
-Part 1: Create project
-=====================
+Part 1: Video Preprocessing with SimBA
+=======================================
+This step will preprocess the videos for SimBA to analyze. There are multiple ways you can do this:
+    - `Built-in Tools in SimBA <./tutorial_tools.html>`_
+    - `Batch videos processing <./batch_videos.html>`_
+
+In this workshop we are going to use batch videos pipeline.
+
+Step 1: Folder Selection
+***************************
+
+
+    .. image:: /images/processvideo.PNG
+
+1. In the main SimBA window click on ``Process Videos`` --> ``Batch pre-process videos``. The window shown below will display.
+
+    .. image:: /images/batchprocessvideo1.PNG
+
+2. Under **Folder Selection** heading and next to ``Video directory``, click on ``Browse Folder`` and navigate to **C:/Golden/raw_videos** and click on ``Select Folder``.
+
+    .. image:: /images/ibangselectfolder.PNG
+
+3. Next to ``Output Directory``, click on ``Browse Folder`` and create a folder **C:/Golden/output** that should store the processed videos and click on ``Select Folder``.
+
+4. Click to ``Confirm`` the two selected directories.
+
+.. warning::
+
+    - Please make sure there is no spaces in your folder names or video names, use underscores if needed.
+
+    - If you select the same video directory as the output directory, your video will be **overwritten**. Best practice is to select a different output directory.
+
+
+
+Step 2: Select parameters
+*****************************
+
+1. Once you select ``Confirm``, a table listing the videos in the ``Video directory`` folder will auto-generate and display. This sequence of videos will now be processed with the parameters you selected, starting with the cropping function.
+
+    .. image:: /images/ibangbatchp2.PNG
+
+2. To crop your videos, click on the ``Crop`` button. A frame from the video will pop up. Left click on the frame and drag the rectangular bounding box to mark the region of the video you wish to keep. Once the rectangle is marked, double tap "Enter" on your keyboard. *(The relevant crop button will turn red once you have selected to crop a video)*
+
+    .. image:: /images/cropvideoroi.gif
+
+3. Please follow refer to the image below as input parameters:
+
+    .. image:: /images/ibangvideotable.PNG
+
+    - To trim a specific video, check the ``Shorten`` box and enter the **Start Time** and  **End Time** in the **HH:MM:SS** format. In our case, try to trim all the videos to 10 seconds by entering 0 for ``Start Time``  and 10 for ``End time`` .
+
+    - To downsample a specific video, check the ``Downsample`` box and enter the **Width** and **Height** in pixels as shown in the image.
+
+    - To change a specific video to grayscale, check the ``Grayscale`` box.
+
+    - To superimpose the specific frame numbers onto the frames of the video, check on the ``Add Frame #`` box. For an example output video with frame numbers overlaid, click `here <https://youtu.be/TMQmNr8Ssyg>`_
+
+    - We are not going to do this as it is computationally expensive but to apply CLAHE, check on the ``CLAHE`` box. For more information on CLAHE, click `here <https://docs.opencv.org/master/d5/daf/tutorial_py_histogram_equalization.html>`_
+
+4. In the first row of the table, there are ``Select All`` checkboxes. Use these checkboxes to apply a manipulation to all of the videos in the folder.
+
+.. note::
+    We know that the `Select All` checkbox might be slightly off position in the table. We will work on fixing it soon.
+
+Step 3: Execute
+********************
+
+1. Once all the parameters are set, click on ``Execute``.
+
+2. The final output videos will be saved in the ``Output Directory`` that you selected in *Step 1*.
+
+    .. image:: /images/ibangvid.PNG
+
+3. A subfolder in the ``Output Directory`` called **tmp** will contain the step-by-step processed videos.
+
+4. The **process_archive** folder contains a **.txt** file that lists the processes that were run.
+
+5. The **Output Directory** will contain all the final processed videos.
+
+
+Part 2: Create Project
+======================
+Now that we have the videos in the optimal format that we can start using SimBA. In this part, we are going to create an "Attack" classifier.
 
 Step 1: Generate Project Config
 ********************************
@@ -28,16 +125,16 @@ In this step you create your main project folder with all the required sub-direc
 
     .. image:: /images/createproject.PNG
 
-2. Navigate to the ``[ Generate project config ]`` tab. Under **General Settings**, specify a ``Project Path`` which is the directory that will contain your main project folder.
+2. Navigate to the ``[ Generate project config ]`` tab. Under **General Settings**, click on the ``Browse Folder`` on ``Project Path`` and select **C:/Golden** and click ``Select Folder``
 
-3. ``Project Name`` is the name of your project.
+3. ``Project Name`` is the name of your project, in this case type in **ibangs_attack**
 
     .. note::
             *Keep in mind that the project name cannot contain spaces. Instead use underscore "_"*
 
-4. Under `SML Settings`, put in the number of predictive classifiers that you wish to create. In this case, we will put ``1``.
+4. Under `SML Settings`, put in the number of predictive classifiers that you wish to create. In this case, put **1**.
 
-5. Click ``Add Classifier`` and it creates a row as shown in the following image. In each entry box, fill in the name of the behavior that you want to classify. In this case type ``Attack``.
+5. Click ``Add Classifier`` and it creates a row as shown in the following image. In each entry box, fill in the name of the behavior that you want to classify. In this case type **Attack**.
 
     .. image:: /images/classifier1.PNG
 
@@ -48,13 +145,17 @@ In this step you create your main project folder with all the required sub-direc
 The default for **SimBA** is 2 animals and 16 body parts ( ``2 animals, 16bp``). There are a few other - ** yet not validated** - options, accessible in the dropdown menu.
 Here, we are going to select ``2 animals, 14bp``.
 
-8. Click on ``Generate Project Config`` to generate your project. The project folder will be located in the specified *Project Path*.
+8. Your windows should look like the image as shown below.
+
+    .. image:: /images/ibangcreateproject.PNG
+
+8. Click on ``Generate Project Config`` to generate your project. The project folder will be located in **C:/Golden/ibangs_attack**.
 
 Step 2: Import videos into project folder for training
 *******************************************
 
-In this step, you can choose to import either one or multiple videos. The imported videos are used for visualizing
-predictions and standardizing distances across videos by calculating metric distances from pixel distances.
+In this step, there are options to import either one or multiple videos. The imported videos are used for visualizing
+predictions and standardizing distances across videos by calculating metric distances from pixel distances. We are going to import **multiple** videos.
 
     .. image:: /images/Import_videos.PNG
 
@@ -63,17 +164,26 @@ Import multiple videos
 
 1. Navigate to the ``[ Import videos into project folder ]`` tab.
 
-2. Under the ``Import multiple videos`` heading, click on ``Browse Folder`` to select a folder that contains all the videos that you wish to import into your project. In our case, we go to */Train/Videos*
+2. Under the ``Import multiple videos`` heading, click on ``Browse Folder`` to select a folder that contains all the videos that you wish to import into your project. In our case, we go to **C:/Golden/Videos**
 
 3. Enter the file type of your videos, ``mp4`` in the ``Video type`` entry box.
 
 4. Click on ``Import multiple videos``.
 
+5. The videos will be imported into **C:/Golden/ibangs_attack/project_folder/videos**
+
 
 Step 3: Import Tracking Data
 *****************************
 
-In this step, you will import your pose-estimation tracking data.
+In this step, you will import your pose-estimation tracking data. There are a lot of different tracking data you can import from `click here <./third_party_annot.html>`_
+In this workshop, we are going to use DeepLabCut's tracking data and they will be in **.csv** format.
+
+For more information about using DeepLabCut to generate tracking data:
+
+    - `DeepLabCut Github page <https://github.com/DeepLabCut/DeepLabCut>`_
+    - `DeepLabCut Preprint <https://arxiv.org/abs/1804.03142>`_
+    - `DeepLabCut Community on Gitter <https://gitter.im/DeepLabCut/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge>`_
 
     .. image:: /images/importcsv.PNG
 
@@ -84,16 +194,19 @@ Import tracking data (.csv)
 
 2. From the drop down menu, .csv files = ``CSV (DLC/DeepPoseKit)``.
 
-3. To import multiple files, choose the folder that contains the files by clicking ``Browse Folder``. In our case, go to */Train/Tracking_data*, then click ``Import csv to project folder``.
+3. To import multiple files, choose the folder that contains the files by clicking ``Browse Folder``. In our case, go to *C:/Golden/Tracking_data*, then click ``Import csv to project folder``.
+
+4. The csvs will be located in **C:/Golden/ibangs_attack/project_folder/csv/input_csv**
 
 
-Part 2: Load project
+Part 3: Load project
 =====================
+Once you have created a project, you will have to load project everytime to use SimBA.
 
 Step 1: Load Project Config
 ****************************
 
-In this step you will load the *project_config.ini* file that was created.
+In this step you will load the *project_config.ini* file that was created. It is located in **C:/Golden/ibangs_attack/project_folder**
 
     .. Note::
         A project_config.ini should always be loaded before any other process.
@@ -104,21 +217,28 @@ In this step you will load the *project_config.ini* file that was created.
     .. image:: /images/loadprojectini.PNG
 
 
-2. Click on ``Browse File``. Then, go to the directory that you created your project in and click on your *project folder*. Locate the *project_config.ini* file and select it. Once this step is completed, it should look like the following, and you should no longer see the text *No file selected*.
+2. Click on ``Browse File``. Then, go to **C:/Golden/ibangs_attack/project_folder**  and click on *project_config.ini* file. Once this step is completed, it should look like the following, and you should no longer see the text **No file selected**.
 
 
-    .. image:: /images/loadedprojectini.PNG
+    .. image:: /images/ibangloadproject.PNG
 
 
-    In this image, you can see the ``Desktop`` is my selected working directory, ``tutorial`` is my project name, and the last two sections of the folder path is always going to be ``project_folder/project_config.ini``.
+    In this image, you can see the **C:/Golden** is my selected working directory, **ibangs_attack** is my project name, and the last two sections of the folder path is always going to be **project_folder/project_config.ini**.
 
 3. Click on ``Load Project``.
+
+4. The following window will pop out.
+
+    .. image:: /images/ibangloadproject2.PNG
 
 
 Step 2: Set video parameters
 *****************************
+As different videos might have different parameters such as the fps and resolution. In order to standardize/normalize your data for machine learning, we have to set the pixels per millimeter for each video.
+The fps and resolutions are automatically pulled from the videos so the user do not have to worry about it.
 
-In this step, you can customize the meta parameters for each of your videos (fps, resolution, metric distances) and provide additional custom video information (Animal ID, group etc). You also set the **pixels per millimeter** for your videos. You will be using a tool that requires the known distance between two points (e.g., the cage width or the cage height) in order to calculate **pixels per millimeter**. The real life distance between the two points is called ``Distance in mm``.
+You will be using a tool that requires the known distance between two points (e.g., the cage width or the cage height) in order to calculate **pixels per millimeter**.
+The real life distance between the two points is called ``Distance in mm``.
 
     .. image:: /images/setvidparameter.PNG
 
@@ -128,14 +248,17 @@ then enter the value *(e.g,: 245)* and click on ``Auto populate Distance in mm i
 and it will auto-populate the table in the next step (see below). If you leave the `Distance in mm` entry box empty,
 the known distance will default to zero and you will fill in the value for each video individually.
 
-2. Click on ``Set Video Parameters`` and the following windows will pop up.
+2. In this case, we are going to leave ``Known distance (mm)`` empty and click on ``Set Video Parameters``. The following will pop up.
 
-    .. image:: /images/videoinfo_table.PNG
+    .. image:: /images/ibangppm.PNG
 
-3. In the above example I imported four videos and their names are listed the leftmost ``Video`` column. In our case, for **Box4-20200705T1421-1425** the *distance in mm* is ``190``, and ``127`` for **CSDS04712701**
+3. We have imported 3 videos and their names are listed on the ``Video`` column. In our case, the ``Distance in mm`` for the videos are the following:
 
-4. I can click on the values in the entry boxes and change them until I am satisfied. Then, I click on
-``Update distance_in_mm`` and this will update the whole table.
+    - **Box4-20200705T1421-1425**  = ``190``
+    - **RI_02_8788**               = ``190``
+    - **CSDS04712701**             = ``127``
+
+4.Enter the values in the entry boxes sand click on ``Update distance_in_mm`` and this will update the whole table.
 
 5. Next, to get the ``Pixels/mm`` for the first video, click on ``Video1`` and the following window will pop up.
 The window that pops up displays the first frame of ``Video1``.
@@ -158,7 +281,7 @@ the image. Once you are done, hit ``Esc``.
 8. If every step is done correctly, the ``Pixels/mm`` column in the table should populate with the number of pixels
 that represent one millimeter,
 
-    .. image:: /images/videoinfo_table2.PNG
+    .. image:: /images/ibangvidtab2.JPG
 
 
 9. Repeat the steps for every video in the table, and once it is done, click on ``Save Data``.
@@ -172,12 +295,26 @@ of body parts in relation to the animal body length. For more details, please cl
 
     .. image:: /images/outliercorrection.PNG
 
-1. In this case, we will click ``Skip outlier correction`` because we have good tracking data and do not need to correct outliers.
+1. Under ``Outlier correction`` click on ``Settings``, and the following window will pop up. The image shows the settings we used in our lab.
+
+    .. image:: /images/ibangoutlier.PNG
+
+2. Make sure your settings matches the image. Enter ``1.5`` for ``Location criterion`` and ``0.7`` for ``Movement criterion``
+
+3. For ``Median or Mean`` select ``mean``, and hit ``Confirm``.
+
+4. Click ``Run outlier correction``.
+
+5. This step will correct the outliers and store the new csvs in **C:/Golden/ibangs_attack/project_folder/csv/outlier_corrected_movement_location**. If you are confident with your tracking data you can skip outlier correction by clicking ``Skip outlier correction (CAUTION)``
 
 Step 4: Extract Features
 ************************
 
-Based on the coordinates of body parts in each frame - and the frame rate and the pixels per millimeter values - the feature extraction step calculates a larger set of features used for behavioral classification. Features are values such as metric distances between body parts, angles, areas, movement, paths, and their deviations and rank in individual frames and across rolling windows. This set of features will depend on the body-parts tracked during pose-estimation (which is defined when creating the project). Click `here <https://github.com/sgoldenlab/simba/blob/master/misc/Feature_description.csv>`_ for an example list of features when tracking 2 mice and 16 body parts.
+Based on the coordinates of body parts in each frame - and the frame rate and the pixels per millimeter values - the feature extraction step calculates a larger set of features used for behavioral classification.
+Features are values such as metric distances between body parts, angles, areas, movement, paths, and their deviations and rank in individual frames and across rolling windows.
+This set of features will depend on the body-parts tracked during pose-estimation (which is defined when creating the project).
+
+Click `here <https://github.com/sgoldenlab/simba/blob/master/misc/Feature_description.csv>`_ for an example list of features when tracking 2 mice and 16 body parts.
 
 1. Click on ``Extract Features``.
 
@@ -201,9 +338,9 @@ and you should select the videos that you wished to annotate.
     .. image:: /images/labelbe.PNG
 
 
-2. Please click `here <./tutorials/b_annotation.html>`_ to learn how to use the behavior annotation interface.
+2. Please click `here <./b_annotation.html>`_ to learn how to use the behavior annotation interface.
 
-3. Once finished, click on ``Generate/Save`` and it will generate a new *.csv* file in */csv/targets_inserted* folder.
+3. Once finished, click on ``Generate/Save`` and it will generate a new *.csv* file in **/csv/targets_inserted** folder.
 
 Step 6: Train Machine Model
 ****************************
@@ -215,6 +352,7 @@ This step is used for training new machine models for behavioral classifications
 
 Train single model
 ###################
+For more details on the training parameters please click `here <https://github.com/sgoldenlab/simba/blob/master/docs/tutorial.md#step-7-train-machine-model>`_
 
 1. Click on ``Settings`` and the following window will pop up.
 
@@ -225,68 +363,20 @@ Train single model
     If you have a .csv file containing hyper-parameter meta data, you can import this file by clicking on ``Browse File``
     and then click on ``Load``. This will autofill all the hyper-parameter entry boxes and model evaluation settings.
 
-2. Under **Machine Model**, choose a machine model from the drop down menu: ``RF`` , ``GBC``, ``XGboost``.
+2. Under ``Load Metadata``, click on ``Browse File`` and navigate to *C:\Golden\Classifier* and select the *model_settings.csv* and click ``Load``. It will fill up the information as shown as the image below.
 
-    - ``RF``        : Random forest
-
-    - ``GBC``       : Gradient boost classifier
-
-    - ``XGboost``   : eXtreme Gradient boost
-
-3. Under the **Model** heading, use the dropdown menu to select the behavioral classifier you wish to define the hyper-parameters for.
-
-4. Under **Hyperparameters**, select the hyper-parameter settings for your model. For more details, please click `here <https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html>`_. Alternatively, import the recommended settings from a meta data file (see above, **Step 1**).
-
-    - ``RF N estimators``: Number of decision trees in the decision ensemble.
-
-    - ``RF Max features``: Number of features to consider when looking for the best split.
-
-    - ``RF Criterion``: The metric used to measure the quality of each split, i.e "gini" or "entropy".
-
-    - ``Train Test Size``: The ratio of the dataset withheld for testing the model (e.g., 0.20).
-
-    - ``RF Min sample leaf``: The minimum number of samples required to be at a leaf node.
-
-    - ``Under sample setting``: "Random undersample" or "None". If "Random undersample", a random sample of the majority class will be used in the train set. The size of this sample will be taken as a ratio of the minority class and should be specified in the "under sample ratio" box below. For more information, click `here <https://imbalanced-learn.readthedocs.io/en/stable/generated/imblearn.under_sampling.RandomUnderSampler.html>`_
-
-    - ``Under sample ratio``: The ratio of samples of the majority class to the minority class in the training data set. Applied only if "Under sample setting" is set to "Random undersample". Ignored if "Under sample setting" is set to "None" or NaN.
-
-    - ``Over sample setting``: "SMOTE", "SMOTEEN" or "None". If "SMOTE" or "SMOTEEN", synthetic data will be generated in the minority class based on k-means to balance the two classes. For more details, click `here <https://imbalanced-learn.readthedocs.io/en/stable/generated/imblearn.over_sampling.SMOTE.html>`_. Alternatively, import recommended settings from a meta data file (see **Step 1**).
-
-    - ``Over sample ratio``: The desired ratio of the number of samples in the minority class over the number of samples in the majority class after over sampling.
-
-
-5. Under **Model Evaluation Settings**.
-
-- ``Generate RF model meta data file``: Generates a .csv file listing the hyper-parameter settings used when creating the model. The generated meta file can be used to create further models by importing it in the **Load Settings** menu (see above, **Step 1**).
-
-- ``Generate Example Decision Tree``: Saves a visualization of a random decision tree in .pdf and .dot formats. Requires `graphviz <https://graphviz.gitlab.io/>`_. For more information, click `here <https://chrisalbon.com/machine_learning/trees_and_forests/visualize_a_decision_tree/>`_
-
-- ``Generate Classification Report``: Saves a classification report truth table in .png format. Depends on `yellowbrick <www.scikit-yb.org/>`_. For more information, click `here <http://www.scikit-yb.org/zh/latest/api/classifier/classification_report.html>`_
-
-- ``Generate Features Importance Log``: Creates a .csv file that lists the importance's `gini importances <https://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html>`_ of all features for the classifier.
-
-- ``Generate Features Importance Bar Graph``: Creates a bar chart of the top N features based on gini importances. Specify N in the ``N feature importance bars`` entry box below.
-
-- ``N feature importance bars``: Integer defining the number of top features to be included in the bar graph (e.g., 15).
-
-- ``Compute Feature Permutation Importance's``: Creates a .csv file listing the importance's (permutation importance's) of all features for the classifier. For more details, please click `here <https://eli5.readthedocs.io/en/latest/blackbox/permutation_importance.html>`_. **Note:** Calculating permutation importance's is computationally expensive and takes a long time.
-
-- ``Generate Sklearn Learning Curve``: Creates a .csv file listing the f1 score at different test data sizes. For more details, please click `here <https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html>`_. This is useful for estimating the benefit of annotating further data.
-
-- ``LearningCurve shuffle K splits``: Number of cross validations applied at each test data size in the learning curve.
-
-- ``LearningCurve shuffle Data splits``: Number of test data sizes in the learning curve.
-
-- ``Generate Precision Recall Curves``: Creates a .csv file listing precision at different recall values. This is useful for titration of the false positive vs. false negative classifications of the models.
+    .. image:: /images/ibangtrainsettings.PNG
 
 6. Click on the ``Save settings into global environment`` button to save your settings into the *project_config.ini* file and use the settings to train a single model.
 
 7. Alternatively, click on the ``Save settings for specific model`` button to save the settings for one model. To generate multiple models - for either multiple different behaviors and/or using multiple different hyper-parameters - re-define the Machine model settings and click on ``Save settings for specific model`` again. Each time the ``Save settings for specific model`` is clicked, a new config file is generated in the */project_folder/configs* folder. In the next step (see below), a model for each config file will be created if pressing the **Train multiple models, one for each saved settings** button.
 
-8. If training a single model, click on ``Train Model``.
+8. Now, we will replace the csvs in the  **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** from our own annotated csvs in **C:/Golden/targets_inserted**.
 
-Optional step before running machine model on new data
+9. Then click on ``Train single model from global environment``.
+
+
+Step 7: Model Validation before running machine model on new data
 ##########################################################
 
 The user can validate each model *( saved in .sav format)* file. In this validation step the user specifies the path to
@@ -296,11 +386,11 @@ Click `here <https://youtu.be/UOLSj7DGKRo>`_ for an example validation video.
 
 1. Click ``Browse File`` and select the *project_config.ini* file and click ``Load Project``.
 
-2. Under **[Run machine model]** tab --> **validate Model on Single Video**, select your features file (.csv). It should be located in ``project_folder/csv/features_extracted``.
+2. Under **[Run machine model]** tab --> **validate Model on Single Video**, select a features file (Box4-20200705T1421-1425.csv). It is located in ``project_folder/csv/features_extracted``.
 
     .. image:: /images/validatemodel_graph1.PNG
 
-3. Under ``Select model file``, click on ``Browse File`` to select a model *(.sav file)*.
+3. Under ``Select model file``, click on ``Browse File`` to select the  *Attack.sav file* from **C:/Golden/Classifier**.
 
 4. Click on  ``Run Model``.
 
@@ -337,20 +427,20 @@ This step runs behavioral classifiers on new data.
 
 1.  Under the **Run Machine Model** heading, click on ``Model Selection``. The following window with the classifier names defined in the *project_config.ini* file will pop up.
 
-    .. image:: /images/rfmodelsettings.PNG
+    .. image:: /images/ibangattk.PNG
 
 
-2. Click on ``Browse File`` and select the model (*.sav*) file associated with each of the classifier names.
+2. Click on ``Browse File`` and select the *Attack.sav* file from *C:/Golden/Classifier*.
 
 3. Once all the models have been chosen, click on ``Set Model`` to save the paths.
 
 4. Fill in the ``Discrimination threshold``.
 
-    - ``Discrimination threshold``: The level of probability required to define that the frame belongs to the target class (see above).
+    - ``Discrimination threshold``: The level of probability required to define that the frame belongs to the target class that you found in step 7.
 
 5. Fill in the ``Minimum behavior bout length``.
 
-    - ``Minimum behavior bout length (ms)``:  The minimum length of a classified behavioral bout(see above).
+    - ``Minimum behavior bout length (ms)``:  The minimum length of a classified behavioral bout that you found in step 7.
 
 6. Click on ``Set model(s)`` and then click on ``Run RF Model`` to run the machine model on the new data.
 
@@ -359,15 +449,11 @@ Step 9: Analyze Machine Results
 
 Access this menu through the ``Load project`` menu and the ``Run machine model`` tab. This step performs summary analyses and presents descriptive statistics in .csv file format. There are three forms of summary analyses: ``Analyze``, ``Analyze distance/velocity``, and ``Analyze severity``.
 
-    .. image:: /images/analyzemachineresult.PNG
+    .. image:: /images/ibangmachineresult.JPG
 
-    - ``Analyze``: This button generates descriptive statistics for each predictive classifier in the project, including the total time, the number of frames, total number of ‘bouts’, mean and median bout interval, time to first occurrence, and mean and median interval between each bout. A date-time stamped output csv file with the data is saved in the ``/project_folder/log`` folder.
+    - ``Analyze machine prediction``: This button generates descriptive statistics for each predictive classifier in the project, including the total time, the number of frames, total number of ‘bouts’, mean and median bout interval, time to first occurrence, and mean and median interval between each bout. A date-time stamped output csv file with the data is saved in the ``/project_folder/log`` folder.
 
     - ``Analyze distance/velocity``: This button generates descriptive statistics for mean and median movements and distances between animals. The date-time stamped output csv file with the data is saved in the ``/project_folder/log`` folder.
-
-    - ``Analyze severity``: Calculates the ‘severity’ of each frame classified as containing attack behavior based on a user-defined scale. **Example:** the user sets a 10-point scale. One frame is predicted to contain an attack, and the total body-part movements of both animals in that frame is in the top 10% percentile of movements in the entire video. In this frame, the attack will be scored as a 10 on the 10-point scale. A date-time stamped output .csv file containing the 'severity' data is saved in the ``/project_folder/log`` folder.
-
-    - ``Severity scale 0 -``:
 
 
 Step 10: Sklearn Visualization
@@ -485,3 +571,10 @@ Merge all the generated plots from the previous step into a single frame and gen
 2. Under **Merge Frames**, click ``Merge Frames`` and frames with all the generated plots will be combined and saved in the ``project_folder/frames/output/merged`` folder in a video format.
 
 
+Other cool stuff
+=================
+
+    - `SHAP <./shap.html>`_
+    - `Kleinberg smoothing <./kleinberg.html>`_
+    - `FSTTC <./fsttc.html>`_
+    - `ROI <./roi_tutorial.html>`_
