@@ -24,7 +24,7 @@ extensions = [
 # -- Project information -----------------------------------------------------
 
 project = 'SimBA-uw-tf'
-copyright = '2021, Simon Nilsson, Jia Jie Choong, Nastacia Goodwin, Sophia Hwang ,Sam Golden'
+copyright = '2021, Simon Nilsson, Jia Jie Choong, Nastacia Goodwin, Sophia Hwang , Sam Golden'
 author = 'Simon Nilsson, Jia Jie Choong, Sam Golden'
 
 # The full version, including alpha/beta/rc tags
