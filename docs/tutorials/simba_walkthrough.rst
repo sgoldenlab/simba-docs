@@ -23,7 +23,7 @@ Prior to the workshop please familiar yourself with the folder structure provide
 
 Please click `here <https://osf.io/dg385/>`_ to download our sample data to follow through this tutorial.
 
-SAM: @JJ, please insert an image of what their folder directery should look like here. 
+    .. image:: /images/folderstruct.JPG
 
 Starting simba
 ===============
