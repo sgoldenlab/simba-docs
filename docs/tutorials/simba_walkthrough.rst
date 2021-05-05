@@ -62,7 +62,7 @@ Step 1: Folder Selection
 
 .. warning::
 
-    - Please make sure there is no spaces in your folder names or video names, use underscores if needed.
+    - Please make sure there are no spaces in your folder names or video names, use underscores if needed.
 
     - If you select the same video directory as the output directory, your video will be **overwritten**. Best practice is to select a different output directory.
 
@@ -79,7 +79,7 @@ Step 2: Select parameters
 
     .. image:: /images/cropvideoroi.gif
 
-3. Please follow refer to the image below as input parameters:
+3. Please refer to the image below as input parameters:
 
     .. image:: /images/ibangvideotable.PNG
 
@@ -116,12 +116,12 @@ Step 3: Execute
 
 Part 2: Create Project
 ======================
-Now that we have the videos in the optimal format that we can start using SimBA. In this part, we are going to create an "Attack" classifier.
+Now that we have the videos in the optimal format, we can start using SimBA. In this part, we are going to create an "Attack" classifier.
 
 Step 1: Generate Project Config
 ********************************
 
-In this step you create your main project folder with all the required sub-directories.
+In this step you create your main project folder which will contain all of the required sub-directories.
 
 1. In the main SimBA window, click on ``File`` and and ``Create a new project``. The following windows will pop up.
 
@@ -136,12 +136,12 @@ In this step you create your main project folder with all the required sub-direc
 
 4. Under `SML Settings`, put in the number of predictive classifiers that you wish to create. In this case, put **1**.
 
-5. Click ``Add Classifier`` and it creates a row as shown in the following image. In each entry box, fill in the name of the behavior that you want to classify. In this case type **Attack**.
+5. Click ``Add Classifier`` and it creates a row as shown in the following image. In each entry box, fill in the name of the behavior that you want to classify. In this case type **Attack**. 
 
     .. image:: /images/classifier1.PNG
 
 
-6. ``Type of Tracking`` allows the user to choose multi-animal tracking or the classic tracking, and we are going to select ``classic tracking``.
+6. ``Type of Tracking`` allows the user to choose (same color) multi-animal tracking or the classic tracking, and we are going to select ``classic tracking``.
 
 7. ``Animal Settings`` is the number of animals and body parts that that the pose estimation tracking data contains.
 The default for **SimBA** is 2 animals and 16 body parts ( ``2 animals, 16bp``). There are a few other - ** yet not validated** - options, accessible in the dropdown menu.
@@ -178,7 +178,7 @@ Import multiple videos
 Step 3: Import Tracking Data
 *****************************
 
-In this step, you will import your pose-estimation tracking data. There are a lot of different tracking data you can import from `click here <./third_party_annot.html>`_
+In this step, you will import your pose-estimation tracking data. We support tracking from most common pose estimation platforms and these can be imported from:  `click here <./third_party_annot.html>`_
 In this workshop, we are going to use DeepLabCut's tracking data and they will be in **.csv** format.
 
 For more information about using DeepLabCut to generate tracking data:
@@ -203,7 +203,7 @@ Import tracking data (.csv)
 
 Part 3: Load project
 =====================
-Once you have created a project, you will have to load project everytime to use SimBA.
+To use SimBA, you will load the project you have created.
 
 Step 1: Load Project Config
 ****************************
@@ -236,8 +236,9 @@ In this step you will load the *project_config.ini* file that was created. It is
 
 Step 2: Set video parameters
 *****************************
-As different videos might have different parameters such as the fps and resolution. In order to standardize/normalize your data for machine learning, we have to set the pixels per millimeter for each video.
-The fps and resolutions are automatically pulled from the videos so the user do not have to worry about it.
+Meta data such as FPS and resolution are automatically pulled for your videos. 
+
+In order to standardize your arena size, you will specify a known distance in your videos. SimBA then calculates the pixels per millimeter for each video.
 
 You will be using a tool that requires the known distance between two points (e.g., the cage width or the cage height) in order to calculate **pixels per millimeter**.
 The real life distance between the two points is called ``Distance in mm``.
@@ -245,7 +246,7 @@ The real life distance between the two points is called ``Distance in mm``.
     .. image:: /images/setvidparameter.PNG
 
 1. Under **Set video parameters(distances,resolution,etc.)**, the entry box named ``Distance in mm`` is the known distance
-between two points in the videos in millimeter. If the known distance is the same in all the videos in the project,
+between two points in the videos in millimeters. If the known distance is the same in all the videos in the project,
 then enter the value *(e.g,: 245)* and click on ``Auto populate Distance in mm in tables``.
 and it will auto-populate the table in the next step (see below). If you leave the `Distance in mm` entry box empty,
 the known distance will default to zero and you will fill in the value for each video individually.
@@ -307,12 +308,12 @@ of body parts in relation to the animal body length. For more details, please cl
 
 4. Click ``Run outlier correction``.
 
-5. This step will correct the outliers and store the new csvs in **C:/Golden/ibangs_attack/project_folder/csv/outlier_corrected_movement_location**. If you are confident with your tracking data you can skip outlier correction by clicking ``Skip outlier correction (CAUTION)``
+5. This step will correct the outliers and store the new csvs in **C:/Golden/ibangs_attack/project_folder/csv/outlier_corrected_movement_location**. If you are confident with your tracking data you can skip outlier correction by clicking ``Skip outlier correction (CAUTION)``, but we do not recommend it. 
 
 Step 4: Extract Features
 ************************
 
-Based on the coordinates of body parts in each frame - and the frame rate and the pixels per millimeter values - the feature extraction step calculates a larger set of features used for behavioral classification.
+Based on the coordinates of body parts in each frame - and the frame rate and the pixels per millimeter values - the feature extraction step calculates a large set of features per frame (~500) used for behavioral classification.
 Features are values such as metric distances between body parts, angles, areas, movement, paths, and their deviations and rank in individual frames and across rolling windows.
 This set of features will depend on the body-parts tracked during pose-estimation (which is defined when creating the project).
 
@@ -323,7 +324,7 @@ Click `here <https://github.com/sgoldenlab/simba/blob/master/misc/Feature_descri
 Step 5: Label Behavior
 ************************
 
-This step is used for label the behaviors in each frames of a video. This data will be concatenated with the features and used for creating behavioral classifiers. 
+This step is used to label the behaviors in each frames of a video. This data will be concatenated with the features and used for creating behavioral classifiers. 
 
 There are two options, one is to start a **new video annotation** and one is to **continue on where you last left off**.
 Both are essentially the same, except the latter will start with the frame where you last saved.
@@ -334,7 +335,7 @@ and select the the video folder that you have annotated half way and take it fro
 
 
 1. Click on ``Select video``. In your project folder navigate to the ``/project_folder/videos/`` folder,
-and you should select the videos that you wished to annotate.
+and you should select the videos that you wish to annotate.
 
 
     .. image:: /images/labelbe.PNG
@@ -373,7 +374,7 @@ For more details on the training parameters please click `here <https://github.c
 
 7. Alternatively, click on the ``Save settings for specific model`` button to save the settings for one model. To generate multiple models - for either multiple different behaviors and/or using multiple different hyper-parameters - re-define the Machine model settings and click on ``Save settings for specific model`` again. Each time the ``Save settings for specific model`` is clicked, a new config file is generated in the */project_folder/configs* folder. In the next step (see below), a model for each config file will be created if pressing the **Train multiple models, one for each saved settings** button.
 
-8. Now, we will replace the csvs in the  **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** from our own annotated csvs in **C:/Golden/targets_inserted**.
+8. Now, we will replace the csvs in the **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** with the Golden Lab annotated csvs in **C:/Golden/targets_inserted**.
 
 9. Then click on ``Train single model from global environment``.
 
@@ -398,13 +399,13 @@ Click `here <https://youtu.be/UOLSj7DGKRo>`_ for an example validation video.
 
 5. Once, it is completed, it should print *"Predictions generated."*, now you can click on ``Generate plot``. A graph window and a frame window will pop up.
 
-    - ``Graph window``: model prediction probability versus frame numbers will be plot. The graph is interactive, click on the graph and the frame window will display the selected frames.
+    - ``Graph window``: model prediction probability versus frame numbers will be plotted. The graph is interactive - click on the graph and the frame window will display the selected frames.
 
     - ``Frame window``: Frames of the chosen video with controls.
 
     .. image:: /images/validategraph1.PNG
 
-7. Click on the points on the graph and picture displayed on the other window will jump to the corresponding frame. There will be a red line to show the points that you have clicked.
+7. As you click on points on the graph, the selected frame will pop up in the adjacent window. There will be a red line to show the points that you have clicked.
 
     .. image:: /images/validategraph2.PNG
 
@@ -412,11 +413,11 @@ Click `here <https://youtu.be/UOLSj7DGKRo>`_ for an example validation video.
 
     .. image:: /images/validategraph.gif
 
-9. Once the threshold is determined, enter the threshold into the ``Discrimination threshold`` entry box and the desire minimum behavior bouth length into the ``Minimum behavior bout lenght(ms)`` entrybox.
+9. Once the threshold is determined, enter the threshold into the ``Discrimination threshold`` entry box and the desire minimum behavior bouth length into the ``Minimum behavior bout lenght(ms)`` entrybox. Note: we recommend using a minimum duration of 0ms and following this with Kleinberg Smoothing as described further down. 
 
     - ``Discrimination threshold``: The level of probability required to define that the frame belongs to the target class. Accepts a float value between 0.0-1.0. For example, if set to 0.50, then all frames with a probability of containing the behavior of 0.5 or above will be classified as containing the behavior. For more information on classification threshold, click `here <https://www.scikit-yb.org/en/latest/api/classifier/threshold.html>`_
 
-    - ``Minimum behavior bout length (ms)``: The minimum length of a classified behavioral bout. **Example**: The random forest makes the following attack predictions for 9 consecutive frames in a 50 fps video: 1,1,1,1,0,1,1,1,1. This would mean, if we don't have a minimum bout length, that the animals fought for 80ms (4 frames), took a brake for 20ms (1 frame), then fought again for another 80ms (4 frames). You may want to classify this as a single 180ms attack bout rather than two separate 80ms attack bouts. With this setting you can do this. If the minimum behavior bout length is set to 20, any interruption in the behavior that is 20ms or shorter will be removed and the behavioral sequence above will be re-classified as: 1,1,1,1,1,1,1,1,1 - and instead classified as a single 180ms attack bout.
+    - ``Minimum behavior bout length (ms)``: The minimum length of a classified behavioral bout. **Example**: The random forest makes the following attack predictions for 9 consecutive frames in a 50 fps video: 1,1,1,1,0,1,1,1,1. This would mean, if we don't have a minimum bout length, that the animals fought for 80ms (4 frames), took a break for 20ms (1 frame), then fought again for another 80ms (4 frames). You may want to classify this as a single 180ms attack bout rather than two separate 80ms attack bouts. With this setting you can do this. If the minimum behavior bout length is set to 20, any interruption in the behavior that is 20ms or shorter will be removed and the behavioral sequence above will be re-classified as: 1,1,1,1,1,1,1,1,1 - and instead classified as a single 180ms attack bout.
 
 10. Click ``Validate`` to validate your model. **Note that this step will take a long time as it will generate a lot of frames.**
 
@@ -442,7 +443,7 @@ This step runs behavioral classifiers on new data.
 
 5. Fill in the ``Minimum behavior bout length``.
 
-    - ``Minimum behavior bout length (ms)``:  The minimum length of a classified behavioral bout that you found in step 7.
+    - ``Minimum behavior bout length (ms)``:  Your desired minimum bout length.
 
 6. Click on ``Set model(s)`` and then click on ``Run RF Model`` to run the machine model on the new data.
 
@@ -472,7 +473,7 @@ These steps generate visualizations of features and machine learning classificat
    - ``Generate frame``: This generates frames(images) of the classification result
 
     .. note::
-        Generate frames are required if you want to merge frames into videos in the future.
+        Generating frames is required if you want to merge frames into videos in the future.
 
 This step grabs the frames of the videos in the project, and draws circles at the location of the tracked body parts, the convex hull of the animal, and prints the behavioral predictions on top of the frame. For an example, click `here <https://www.youtube.com/watch?v=7AVUWz71rG4&t=519s>`_
 
