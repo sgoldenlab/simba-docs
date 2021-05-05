@@ -8,7 +8,9 @@ about the menus and options and their use cases, see the
 
 Logistics prior to workshop start
 =================================
-Prior to the workshop please familiar yourself with the folder structure provided. There is a shortcut to the folder structure located on the desktop named **SimBA-IBANG**, double click on it to get access to **C:\\Golden**.
+Prior to the workshop please familiar yourself with the folder structure provided. 
+
+    - There is a shortcut to the folder structure located on the desktop named **SimBA-IBANG**, double click on it to get access to **C:\\Golden**.
 
 - ``Classifier`` : This folder contains pre-trained classifiers from the Golden Lab (*Attack.sav*, *Defensive.sav*) and the classifier settings used for training (*model_settings.csv*).
 
