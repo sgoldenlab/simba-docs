@@ -319,6 +319,10 @@ This set of features will depend on the body-parts tracked during pose-estimatio
 
 Click `here <https://github.com/sgoldenlab/simba/blob/master/misc/Feature_description.csv>`_ for an example list of features when tracking 2 mice and 16 body parts.
 
+Click `here <https://github.com/sgoldenlab/simba/blob/master/misc/features_user_defined_pose_config.csv>`_ for example list of features for user defined pose config.
+
+Click `here <https://github.com/sgoldenlab/simba/blob/master/docs/extractFeatures.md>`_ for user-defined feature extraction script.
+
 1. Click on ``Extract Features``.
 
 Step 5: Label Behavior
