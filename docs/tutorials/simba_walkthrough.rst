@@ -8,7 +8,7 @@ about the menus and options and their use cases, see the
 
 Logistics prior to workshop start
 =================================
-Prior to the workshop please familiar yourself with the folder structure provided.
+Prior to the workshop please familiar yourself with the folder structure provided. There is a shortcut to the folder structure located on the desktop named **SimBA-IBANG**, double click on it to get access to **C:\Golden**.
 
 - ``Classifier`` : This folder contains pre-trained classifiers from the Golden Lab (*Attack.sav*, *Defensive.sav*) and the classifier settings used for training (*model_settings.csv*).
 
@@ -21,7 +21,7 @@ Prior to the workshop please familiar yourself with the folder structure provide
 - ``targets_inserted``: This folder contains our hand annotated csvs for training a classifier in **Part 2**
 
 
-Please click `here <https://osf.io/dg385/>`_ to download our sample data to follow through this tutorial.
+Please click `here <https://osf.io/dg385/>`_ to download our sample data to follow through this tutorial. If you are in this workshop, the files are in **C:\Golden** or double click on the shortcut **SimBA-IBANG** on the desktop.
 
     .. image:: /images/folderstruct.JPG
 
