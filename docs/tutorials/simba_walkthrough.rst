@@ -13,6 +13,7 @@ Prior to the workshop please familiar yourself with the folder structure provide
 .. note::
 
     If you are in this workshop, the files are in **C:\Golden**. There is a shortcut to the folder structure located on the desktop named **SimBA-IBANG**, double click on it to get access to **C:\\Golden**.
+    
     .. image:: /images/folderstruct.JPG
 
 - ``Classifier`` : This folder contains pre-trained classifiers from the Golden Lab (*Attack.sav*, *Defensive.sav*) and the classifier settings used for training (*model_settings.csv*).
