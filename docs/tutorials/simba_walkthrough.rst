@@ -250,10 +250,10 @@ The real life distance between the two points is called ``Distance in mm``.
 
     .. image:: /images/setvidparameter.PNG
 
-1. Under **Set video parameters(distances,resolution,etc.)**, the entry box named ``Distance in mm`` is the known distance
+1. Click on the **[Video parameters]** tab, under **Set video parameters(distances,resolution,etc.)**, the entry box named ``Known distance(mm)`` is the known distance
 between two points in the videos in millimeters. If the known distance is the same in all the videos in the project,
-then enter the value *(e.g,: 245)* and click on ``Auto populate Distance in mm in tables``.
-and it will auto-populate the table in the next step (see below). If you leave the `Distance in mm` entry box empty,
+then enter the value *(e.g,: 245)* and click on ``Autopopulate table``.
+and it will auto-populate the table in the next step (see below). If you leave the `Known distance(mm)` entry box empty,
 the known distance will default to zero and you will fill in the value for each video individually.
 
 2. In this case, we are going to leave ``Known distance (mm)`` empty and click on ``Set Video Parameters``. The following will pop up.
@@ -274,7 +274,7 @@ The window that pops up displays the first frame of ``Video1``.
 
     .. image:: /images/getcoord1.PNG
 
-6. Now, double **left** click to select two points that defines the known distance in real life.
+6. Now, double **left** click to select two points that defines the known distance in real life. In this case click on width of the box for the ones in cages (RI_02_8788, CSDS04712701), and the height for the operant chamber(Box4-20200705T1421-1425)
 
     .. image:: /images/getcoord2.PNG
 
