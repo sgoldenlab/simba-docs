@@ -375,7 +375,7 @@ For more details on the training parameters please click `here <https://github.c
     If you have a .csv file containing hyper-parameter meta data, you can import this file by clicking on ``Browse File``
     and then click on ``Load``. This will autofill all the hyper-parameter entry boxes and model evaluation settings.
 
-2. Under ``Load Metadata``, click on ``Browse File`` and navigate to *C:\Golden\Classifier* and select the *model_settings.csv* and click ``Load``. It will fill up the information as shown as the image below.
+2. Under ``Load Metadata``, click on ``Browse File`` and navigate to *C:/Golden/Classifier* and select the *model_settings.csv* and click ``Load``. It will fill up the information as shown as the image below.
 
     .. image:: /images/ibangtrainsettings.PNG
 
@@ -383,7 +383,7 @@ For more details on the training parameters please click `here <https://github.c
 
 7. Alternatively, click on the ``Save settings for specific model`` button to save the settings for one model. To generate multiple models - for either multiple different behaviors and/or using multiple different hyper-parameters - re-define the Machine model settings and click on ``Save settings for specific model`` again. Each time the ``Save settings for specific model`` is clicked, a new config file is generated in the */project_folder/configs* folder. In the next step (see below), a model for each config file will be created if pressing the **Train multiple models, one for each saved settings** button.
 
-8. Now, we will replace the csvs in the **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** with the Golden Lab annotated csvs in **C:/Golden/targets_inserted**.
+8. Due to time constraint, we will replace the csvs in the **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** with the Golden Lab annotated csvs in **C:/Golden/targets_inserted**.
 
 9. Then click on ``Train single model from global environment``.
 
