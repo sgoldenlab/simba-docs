@@ -143,7 +143,7 @@ In this step you create your main project folder which will contain all of the r
 
 5. Click ``Add Classifier`` and it creates a row as shown in the following image. In each entry box, fill in the name of the behavior that you want to classify. In this case type **Attack**. 
 
-    .. image:: /images/classifier1.PNG
+    .. image:: /images/classifier1b.PNG
 
 
 6. ``Type of Tracking`` allows the user to choose (same color) multi-animal tracking or the classic tracking, and we are going to select ``classic tracking``.
