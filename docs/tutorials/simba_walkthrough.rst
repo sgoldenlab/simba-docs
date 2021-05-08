@@ -8,7 +8,7 @@ about the menus and options and their use cases, see the
 
 Logistics prior to workshop start
 =================================
-Prior to the workshop please familiar yourself with the folder structure provided. 
+Prior to the workshop please familiarize yourself with the folder structure provided. 
 
 .. note::
 
@@ -128,7 +128,7 @@ Step 1: Generate Project Config
 
 In this step you create your main project folder which will contain all of the required sub-directories.
 
-1. In the main SimBA window, click on ``File`` and and ``Create a new project``. The following windows will pop up.
+1. In the main SimBA window, click on ``File`` and ``Create a new project``. The following windows will pop up.
 
     .. image:: /images/createproject.PNG
 
