@@ -173,7 +173,7 @@ Import multiple videos
 
 2. Under the ``Import multiple videos`` heading, click on ``Browse Folder`` to select a folder that contains all the videos that you wish to import into your project. In our case, we go to **C:/Golden/Videos**
 
-3. Enter the file type of your videos, ``mp4`` in the ``Video type`` entry box.
+3. Enter the file type of your videos, ``mp4`` in the ``Video format`` entry box.
 
 4. Click on ``Import multiple videos``.
 
