@@ -18,7 +18,7 @@ In the main SimBA menu, click on ``File > Load Project > Load Project.ini > Brow
 Step 2. Opening labelling behavior window
 =========================================
 
-In the 'Load project' window, under ``Label Behavior`` click on ``Select folder with frames``. This will prompt you to select a **folder** containing video frames (in png format). Following folder selection a new window will display the first frame of the video. If you have not extracted the frames for the videos that you want to label, they need to be created now. For information on how to extract video frames in SimBA, please check these parts of the tutorial: `[1] <https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_tools.md#extract-frames>`_, `[2] <https://github.com/sgoldenlab/simba/blob/master/docs/tutorial.md#step-4-extract-frames-into-project-folder>`_.
+In the 'Load project' window, under ``Label Behavior`` click on ``Select video (create new video annotation)``. This will prompt you to select a **vidoe file**. If you have previously annotated some frames and would like to continue your annotation, click on ``Select video (continue existing video annotation)``
 
     .. image:: /images/labellingtable.PNG
 
