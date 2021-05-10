@@ -379,17 +379,17 @@ For more details on the training parameters please click `here <https://github.c
 
     .. image:: /images/ibangtrainsettings.PNG
 
-6. Click on the ``Save settings into global environment`` button to save your settings into the *project_config.ini* file and use the settings to train a single model.
+3. Click on the ``Save settings into global environment`` button to save your settings into the *project_config.ini* file and use the settings to train a single model.
 
-7. Alternatively, click on the ``Save settings for specific model`` button to save the settings for one model. To generate multiple models - for either multiple different behaviors and/or using multiple different hyper-parameters - re-define the Machine model settings and click on ``Save settings for specific model`` again. Each time the ``Save settings for specific model`` is clicked, a new config file is generated in the */project_folder/configs* folder. In the next step (see below), a model for each config file will be created if pressing the **Train multiple models, one for each saved settings** button.
+4. Alternatively, click on the ``Save settings for specific model`` button to save the settings for one model. To generate multiple models - for either multiple different behaviors and/or using multiple different hyper-parameters - re-define the Machine model settings and click on ``Save settings for specific model`` again. Each time the ``Save settings for specific model`` is clicked, a new config file is generated in the */project_folder/configs* folder. In the next step (see below), a model for each config file will be created if pressing the **Train multiple models, one for each saved settings** button.
 
-8. Due to time constraint, we will replace the csvs in the **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** with the Golden Lab annotated csvs in **C:/Golden/targets_inserted**.
+5. Due to time constraint, we will replace the csvs in the **C:/Golden/ibangs_attack/project_folder/csv/targets_inserted** with the Golden Lab annotated csvs in **C:/Golden/targets_inserted**.
 
-9. Then click on ``Train single model from global environment``.
+6. Then click on ``Train single model from global environment``.
 
 
 Step 7: Model Validation before running machine model on new data
-##########################################################
+******************************************************************
 
 The user can validate each model *( saved in .sav format)* file. In this validation step the user specifies the path to
 a previously created model in .sav file format, and a .csv file containing the features extracted from a video. This process
@@ -412,7 +412,7 @@ Click `here <https://youtu.be/UOLSj7DGKRo>`_ for an example validation video.
 
     .. image:: /images/validategraph1.PNG
 
-5. As you click on points on the graph, the selected frame will pop up in the adjacent window. There will be a red line to show the points that you have clicked.
+5. As you **double click** on points on the graph, the selected frame will pop up in the adjacent window. There will be a red line to show the points that you have clicked.
 
     .. image:: /images/validategraph2.PNG
 
@@ -435,7 +435,7 @@ This step runs behavioral classifiers on new data.
 
     .. image:: /images/runrfmodel.PNG
 
-1.  Under the **Run Machine Model** heading, click on ``Model Selection``. The following window with the classifier names defined in the *project_config.ini* file will pop up.
+1.  Under the **Run Machine Model** heading, click on ``Model Settings``. The following window with the classifier names defined in the *project_config.ini* file will pop up.
 
     .. image:: /images/ibangattk.PNG
 
@@ -452,7 +452,7 @@ This step runs behavioral classifiers on new data.
 
     - ``Minimum behavior bout length (ms)``:  Your desired minimum bout length.
 
-6. Click on ``Set model(s)`` and then click on ``Run RF Model`` to run the machine model on the new data.
+6. Click on ``Set model(s)``, and exit out of the current window, then click on ``Run RF Model`` to run the machine model on the new data.
 
 Step 9: Analyze Machine Results
 ********************************
