@@ -12,7 +12,7 @@ Requirements
 Install using anaconda
 ^^^^^^^^^^^^^^^^^^^^^^^^
 1. Make a new environment with python 3.6
-2. In the terminal type ``pip install simba-uw-tf``
+2. In the terminal type ``pip install simba-uw-tf-dev``
 3. It will error out because of shapely. Uninstall shapely by ``pip uninstall shapely``
 4. Then reinstall shapely with conda command: ``conda install -c conda-forge shapely``
 
