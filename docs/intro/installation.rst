@@ -11,8 +11,8 @@ Requirements
 
 Install using anaconda
 ^^^^^^^^^^^^^^^^^^^^^^^^
-1. Make a new environment with python 3.6, `conda create -n myenv python=3.6`
-2. Make sure you activate your environment, `conda activate myenv`
+1. Make a new environment with python 3.6, `conda create -n simbaenv python=3.6`
+2. Make sure you activate your environment, `conda activate simbaenv`
 3. In the terminal type ``pip install simba-uw-tf-dev``
 4. It will error out because of shapely. Uninstall shapely by ``pip uninstall shapely``
 5. Then reinstall shapely with conda command: ``conda install -c conda-forge shapely``
