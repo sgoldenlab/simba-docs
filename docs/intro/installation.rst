@@ -4,7 +4,7 @@ Installation
 Requirements
 ^^^^^^^^^^^^^^
 
-1. Python 3.6
+1. Python 3.6.8
 2. Git
 3. FFmpeg
 4. Windows OS
