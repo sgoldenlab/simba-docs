@@ -6,6 +6,11 @@ This is a step by step tutorial to start using SimBA to create behavioral classi
 about the menus and options and their use cases, see the
 `SimBA Scenario tutorials <https://github.com/sgoldenlab/simba#scenario-tutorials>`_
 
+Installation
+============
+We recommend using anaconda and install simba in an anaconda environment. Please click `here <https://simba-docs.readthedocs.io/en/latest/docs/intro/installation.html>`_ to learn how to install SimBA.
+
+
 Logistics prior to workshop start
 =================================
 Prior to the workshop please familiarize yourself with the folder structure provided. 
