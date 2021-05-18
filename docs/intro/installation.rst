@@ -33,7 +33,7 @@ Requirements
 - XCode installed
 - Homebrew
 - ffmpeg
-- Python 3.6
+- Python 3.6.8
 - Anaconda
 
 Installation process
