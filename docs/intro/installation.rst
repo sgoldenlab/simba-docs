@@ -4,14 +4,18 @@ Installation
 Requirements
 ^^^^^^^^^^^^^^
 
-1. Python 3.6
+1. Python 3.6.8
 2. Git
 3. FFmpeg
 4. Windows OS
 
+Installing on windows machine
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Open up command prompt and type, ``pip install simba-uw-tf-dev``
+
 Install using anaconda
 ^^^^^^^^^^^^^^^^^^^^^^^^
-1. Make a new environment with python 3.6, ``conda create -n simbaenv python=3.6``
+1. Make a new environment with python 3.6, ``conda create -n simbaenv python=3.6.10`` 
 2. Make sure you activate your environment, ``conda activate simbaenv``
 3. In the terminal type ``pip install simba-uw-tf-dev``
 4. It will error out because of shapely. Uninstall shapely by ``pip uninstall shapely``
