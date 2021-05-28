@@ -74,7 +74,7 @@ schematics currently include:
 
 .. Note::
     SimBA now also supports user-created body-part annotation schemes. These annotations schemes can be created in the
-    SimBA project configuration menu - click `HERE <https://github.com/sgoldenlab/simba/blob/master/docs/Pose_config.md.`_
+    SimBA project configuration menu - click `HERE <https://github.com/sgoldenlab/simba/blob/master/docs/Pose_config.md.>`_
     to learn more.
 
 *****************************
