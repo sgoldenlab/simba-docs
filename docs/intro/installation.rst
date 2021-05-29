@@ -13,14 +13,25 @@ Installing on windows machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Open up command prompt and type, ``pip install simba-uw-tf-dev``
 
-Install using anaconda
+Install using anaconda (does not support dlc)
 ^^^^^^^^^^^^^^^^^^^^^^^^
+This will install the latest development version of SimBA.
+
 1. Open up command prompt.
 2. Make a new environment with python 3.6, ``conda create -n simbaenv python=3.6.10`` 
 3. Make sure you activate your environment, ``conda activate simbaenv``
 4. In the terminal type ``pip install simba-uw-tf-dev``
 5. It will error out because of shapely. Uninstall shapely by ``pip uninstall shapely``
 6. Then reinstall shapely with conda command: ``conda install -c conda-forge shapely``
+
+If you want to use dlc in simba (anaconda)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This will install SimBA with built in deeplabcut.
+
+1. Downgrade pip to version 19.0.1 by ``pip install pip==19.0.1``.
+2. Install simba tensorflow version, ``pip install simba-uw-tf``
+3. It will error out because of shapely. Uninstall shapely by ``pip uninstall shapely``
+4. Then reinstall shapely with conda command: ``conda install -c conda-forge shapely``
 
 
 Installing on MacOS
