@@ -13,7 +13,7 @@ Installing on windows machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Open up command prompt and type, ``pip install simba-uw-tf-dev``
 
-Install using anaconda (does not support dlc)
+Install SimBA (dev) using anaconda (does not support dlc)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 This will install the latest development version of SimBA.
 
@@ -24,7 +24,7 @@ This will install the latest development version of SimBA.
 5. It will error out because of shapely. Uninstall shapely by ``pip uninstall shapely``
 6. Then reinstall shapely with conda command: ``conda install -c conda-forge shapely``
 
-If you want to use dlc in simba (anaconda)
+Install SimBA with built in DeepLabCut (anaconda)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This will install SimBA with built in deeplabcut.
 
