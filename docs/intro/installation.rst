@@ -1,6 +1,6 @@
 Installation
 ==============
-If you are having trouble installing SimBA, please reach out on `gitter <https://gitter.im/SimBA-Resource/community>_`.
+If you are having trouble installing SimBA, please reach out on `gitter <https://gitter.im/SimBA-Resource/community>`_.
 
 Requirements
 ^^^^^^^^^^^^^^
