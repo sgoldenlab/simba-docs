@@ -7,7 +7,7 @@ Requirements
 
 1. Python 3.6.8
 2. Git
-3. FFmpeg
+3. `FFmpeg <https://www.wikihow.com/Install-FFmpeg-on-Windows>`_
 4. Windows OS
 
 Installing on windows machine
