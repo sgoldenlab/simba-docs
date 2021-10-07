@@ -27,7 +27,10 @@ This will install the latest development version of SimBA.
 
 Install SimBA with built in DeepLabCut (anaconda)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This will install SimBA with built in deeplabcut.
+This will install SimBA with built in deeplabcut. 
+
+.. warning::
+    We are are no longer supporting the legacy SimBAxTF branch, which required TensorFlow. To receive support, you must download the most up-to-date SimBA version (pip install simba-uw-tf-dev). If you are using the legacy SimBAxTF branch, please transition to the currently supported branch. If you require access to download the legacy branch, please contact us on Gitter for access. 
 
 1. Open up command prompt.
 2. Make a new environment with python 3.6, ``conda create -n simbaenv python=3.6.10`` 
