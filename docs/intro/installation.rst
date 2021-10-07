@@ -14,7 +14,7 @@ Installing on windows machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Open up command prompt and type, ``pip install simba-uw-tf-dev``
 
-Install SimBA (dev) using anaconda (does not support dlc)
+Install SimBA using anaconda (does not support dlc)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 This will install the latest development version of SimBA.
 
