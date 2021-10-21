@@ -51,7 +51,7 @@ Requirements
 - XCode installed
 - Homebrew
 - ffmpeg
-- Python 3.6.8
+- Python 3.6.10
 - Anaconda
 
 Installation process
