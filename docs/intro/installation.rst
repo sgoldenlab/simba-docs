@@ -54,6 +54,10 @@ Requirements
 - Python 3.6.13
 - Anaconda
 
+Please make sure that in your environment, the version of ``tk`` is ``8.6.10`` 
+
+.. image:: /images/tkfix.png
+
 Installation process
 ********************
 
